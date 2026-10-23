@@ -2,91 +2,235 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Per Te ❤️</title>
+    <!-- Fondamentale per la visualizzazione corretta su cellulare -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sorpresina ❤️</title>
     <style>
-        /* Stili grafici del sito */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fff0f5; /* Sfondo rosa tenue */
-            color: #333;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
 
-        header {
-            background-color: #ff6b81;
-            color: white;
-            padding: 40px 20px;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(180deg, #ffeef2 0%, #ffd1dc 100%);
+            color: #4a4a4a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 15px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Contenitore principale adatto allo schermo del telefono */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 420px; /* Dimensione ideale per smartphone */
+            border-radius: 25px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 30px rgba(255, 105, 135, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            margin-top: 10px;
         }
 
         h1 {
-            margin: 0;
-            font-size: 2.5em;
+            color: #ff4757;
+            font-size: 2em;
+            margin-bottom: 5px;
+            font-weight: 700;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .subtitle {
+            font-size: 0.95em;
+            color: #777;
+            margin-bottom: 20px;
         }
 
-        .photo-frame {
-            margin: 20px 0;
-        }
-
-        .photo-frame img {
+        /* Foto adattata allo schermo */
+        .photo-container {
             width: 100%;
-            max-width: 500px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            background-color: #f7f7f7;
         }
 
-        p.lettera {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #555;
-            text-align: justify;
-            padding: 0 20px;
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Box del Contatore */
+        .counter-box {
+            background-color: #fff0f3;
+            border: 2px dashed #ffb3c1;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .counter-box p {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ff4d6d;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .counter-box h2 {
+            font-size: 1.6em;
+            color: #c9184a;
+        }
+
+        /* Lettera/Dedica */
+        .letter {
+            text-align: left;
+            font-size: 1em;
+            line-height: 1.6;
+            color: #444;
+            background: #fefae0;
+            padding: 18px;
+            border-radius: 15px;
+            border-left: 5px solid #ff4d6d;
+            margin-bottom: 25px;
+        }
+
+        /* Pulsante Touch Friendly per smartphone */
+        .btn-surprise {
+            background: linear-gradient(45deg, #ff4757, #ff6b81);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-surprise:active {
+            transform: scale(0.97);
+        }
+
+        #secret-message {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #fff3bf;
+            border-radius: 12px;
+            color: #d9480f;
+            font-weight: bold;
+            font-size: 1.05em;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         footer {
-            margin-top: 40px;
-            padding: 20px;
-            font-size: 0.9em;
+            margin-top: 25px;
+            font-size: 0.85em;
             color: #888;
+            z-index: 10;
+        }
+
+        /* Animazione cuori di sfondo */
+        .heart {
+            position: fixed;
+            bottom: -10vh;
+            font-size: 1.5rem;
+            color: rgba(255, 71, 87, 0.4);
+            animation: floatUp 6s linear infinite;
+            z-index: 1;
+            user-select: none;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Per Te, [Nome della tua ragazza] ❤️</h1>
-        <p>Un piccolo spazio dedicato a noi</p>
-    </header>
+    <!-- Cuori fluttuanti di sfondo -->
+    <div class="heart" style="left: 10%; animation-duration: 7s;">❤️</div>
+    <div class="heart" style="left: 30%; animation-duration: 5s; animation-delay: 1s;">💖</div>
+    <div class="heart" style="left: 55%; animation-duration: 8s; animation-delay: 2s;">💕</div>
+    <div class="heart" style="left: 80%; animation-duration: 6s; animation-delay: 3s;">❤️</div>
 
-    <div class="container">
-        <h2>Un pensiero speciale</h2>
-        
-        <!-- Sostituisci "foto.jpg" con il nome della tua immagine -->
-        <div class="photo-frame">
-            <img src="foto.jpg" alt="Noi insieme">
+    <!-- Carta Principale -->
+    <div class="card">
+        <h1>Sorpresina! ❤️</h1>
+        <p class="subtitle">Un angolo speciale creato per te</p>
+
+        <!-- FOTO: Carica un file chiamato "foto.jpg" nella stessa cartella -->
+        <div class="photo-container">
+            <img src="foto.jpg" alt="La nostra foto">
         </div>
 
-        <h3>La mia lettera per te</h3>
-        <p class="lettera">
-            Scrivi qui il tuo messaggio speciale per lei. Puoi raccontare come vi siete conosciuti, 
-            cosa ami di lei o semplicemente fare degli auguri speciali...
-        </p>
+        <!-- CONTATORE GIORNI -->
+        <div class="counter-box">
+            <p>Stiamo insieme da</p>
+            <h2 id="days-counter">...</h2>
+        </div>
+
+        <!-- DEDICA / LETTERA -->
+        <div class="letter">
+            <p>Scrivi qui il tuo messaggio d'amore per lei! Puoi raccontare un momento speciale, dirle cosa ami di lei o farle semplicemente un augurio di cuore.</p>
+        </div>
+
+        <!-- PULSANTE INTERATTIVO -->
+        <button class="btn-surprise" onclick="toggleSurprise()">Clicca per una sorpresa ✨</button>
+        
+        <div id="secret-message">
+            Sei la persona più speciale della mia vita! Ti amo tantissimo! ❤️
+        </div>
     </div>
 
     <footer>
-        <p>Fatto con ❤️ da [Il tuo nome]</p>
+        Fatto con amore per te ❤️
     </footer>
 
+    <script>
+        // --- CONFIGURA LA VOSTRA DATA QUI ---
+        // Formato: Anno, Mese (attenzione: Gennaio = 0, Febbraio = 1, Marzo = 2, ecc.), Giorno
+        // Esempio per 15 Maggio 2023 -> new Date(2023, 4, 15)
+        const startDate = new Date(2023, 0, 1); 
+
+        function calculateDays() {
+            const today = new Date();
+            const timeDiff = today - startDate;
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            document.getElementById('days-counter').innerText = days + " Giorni";
+        }
+
+        function toggleSurprise() {
+            const msg = document.getElementById('secret-message');
+            if (msg.style.display === 'block') {
+                msg.style.display = 'none';
+            } else {
+                msg.style.display = 'block';
+            }
+        }
+
+        // Avvia il calcolo dei giorni all'apertura
+        calculateDays();
+    </script>
 </body>
 </html>
