@@ -3,137 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sorpresina ❤️</title>
+    <title>Sorpresina Per Te ❤️</title>
+
+    <!-- Google Fonts: Dancing Script per titoli eleganti calligrafici, Poppins per il testo principale, Playfair Display per accenti chic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: linear-gradient(180deg, #ffe4e9 0%, #ffccd5 100%);
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #ffccd5 100%);
+            background-size: 200% 200%;
+            animation: gradientBG 10s ease infinite;
             color: #4a4a4a;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 15px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Cuoricini fluttuanti di sfondo */
+        .heart-particle {
+            position: fixed;
+            color: rgba(255, 77, 109, 0.35);
+            font-size: 20px;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp 7s linear infinite;
+            bottom: -30px;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-105vh) rotate(360deg) scale(1.3);
+                opacity: 0;
+            }
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             width: 100%;
-            max-width: 380px;
-            min-height: 550px;
-            border-radius: 25px;
-            padding: 25px 20px;
-            box-shadow: 0 10px 30px rgba(255, 120, 150, 0.3);
+            max-width: 400px;
+            min-height: 570px;
+            border-radius: 30px;
+            padding: 28px 22px;
+            box-shadow: 0 15px 35px rgba(230, 80, 115, 0.25),
+                        0 0 0 1px rgba(255, 255, 255, 0.6) inset;
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            z-index: 10;
+            transition: all 0.3s ease;
         }
 
         /* FASE 1 */
         .photo-space {
             width: 100%;
-            height: 200px;
-            border-radius: 18px;
+            height: 210px;
+            border-radius: 22px;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             background-color: #fff0f3;
             display: flex;
             justify-content: center;
             align-items: center;
             border: 2px dashed #ffb3c1;
+            box-shadow: 0 8px 18px rgba(255, 120, 150, 0.15);
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 5px 15px rgba(255, 77, 109, 0.2); }
+            100% { box-shadow: 0 10px 25px rgba(255, 77, 109, 0.45); }
         }
 
         .photo-space img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-space:hover img {
+            transform: scale(1.05);
         }
 
         h1.question {
-            color: #ff4d6d;
+            color: #ff3366;
             font-size: 1.35em;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            font-weight: 700;
+            line-height: 1.45;
+            margin-bottom: 22px;
+            font-weight: 600;
         }
 
         .btn-group {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .btn-choice {
             flex: 1;
-            padding: 14px;
+            padding: 15px;
             font-size: 1.1em;
-            font-weight: bold;
+            font-weight: 600;
             border: none;
             border-radius: 50px;
             cursor: pointer;
+            transition: all 0.25s ease;
         }
 
         .btn-yes {
-            background-color: #ff4d6d;
+            background: linear-gradient(135deg, #ff4d6d, #ff758f);
             color: white;
-            box-shadow: 0 4px 12px rgba(255, 77, 109, 0.4);
+            box-shadow: 0 6px 18px rgba(255, 77, 109, 0.4);
+            animation: heartBeat 2s infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95) !important;
         }
 
         .btn-no {
-            background-color: #e0e0e0;
-            color: #666;
+            background-color: #f1f2f6;
+            color: #718093;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         #no-warning {
             display: none;
-            color: #ff4757;
-            font-weight: bold;
+            color: #ff3366;
+            font-weight: 600;
             font-size: 0.9em;
-            margin-top: 15px;
+            margin-top: 16px;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
         }
 
         /* FASE 2: TASTIERA PIN */
         #step-2 {
             display: none;
+            animation: fadeInScale 0.4s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.92); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .lock-icon {
-            font-size: 2.2em;
-            margin-bottom: 8px;
+            font-size: 2.5em;
+            margin-bottom: 6px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .hint-text {
-            color: #ff4d6d;
-            font-weight: bold;
+            color: #ff3366;
+            font-weight: 600;
             font-size: 0.95em;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .pin-dots {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 16px;
             margin-bottom: 25px;
         }
 
         .dot {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border: 2px solid #ff4d6d;
             border-radius: 50%;
             background-color: transparent;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .dot.filled {
             background-color: #ff4d6d;
+            box-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
+            transform: scale(1.15);
         }
 
         .keypad {
@@ -141,36 +234,38 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
-            max-width: 270px;
+            max-width: 280px;
             margin: 0 auto;
         }
 
         .key {
-            width: 70px;
-            height: 70px;
+            width: 72px;
+            height: 72px;
             border-radius: 50%;
-            background-color: #fff0f3;
-            color: #ff4d6d;
+            background: rgba(255, 240, 243, 0.9);
+            color: #ff3366;
             font-size: 1.6em;
-            font-weight: bold;
+            font-weight: 600;
             border: 1px solid #ffccd5;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(255, 120, 150, 0.12);
+            transition: all 0.15s ease;
         }
 
         .key:active {
             background-color: #ff4d6d;
             color: white;
+            transform: scale(0.92);
         }
 
         .key-del {
-            font-size: 1.1em;
-            background-color: #f1f2f6;
+            font-size: 1.2em;
+            background-color: #f8f9fa;
             color: #576574;
-            border: none;
+            border: 1px solid #e2e8f0;
         }
 
         .key-empty {
@@ -178,160 +273,272 @@
         }
 
         #error-msg {
-            color: #ff4757;
-            font-weight: bold;
+            color: #ff3366;
+            font-weight: 600;
             font-size: 0.9em;
-            margin-top: 15px;
-            min-height: 20px;
+            margin-top: 16px;
+            min-height: 22px;
         }
 
-        /* FASE 3: MENU DISPENSE MENU PRINCIPALE */
+        /* FASE 3: MENU DISPENSE PRINCIPALE */
         #step-3 {
             display: none;
+            animation: fadeInScale 0.4s ease-out;
         }
 
         .menu-title {
-            color: #ff4d6d;
-            font-size: 1.5em;
-            margin-bottom: 5px;
-        }
-
-        .days-header {
-            font-size: 0.9em;
-            color: #ff758f;
-            font-weight: bold;
-            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+            color: #ff2a6d;
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 22px;
+            text-shadow: 1px 2px 4px rgba(255, 77, 109, 0.2);
+            display: inline-block;
+            transform: rotate(-2deg);
         }
 
         .folder-grid {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
         }
 
         .folder-card {
-            background: linear-gradient(135deg, #fff0f3, #ffe4e9);
-            border: 2px solid #ffccd5;
-            border-radius: 20px;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1.5px solid rgba(255, 179, 193, 0.8);
+            border-radius: 22px;
+            padding: 18px 22px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(255, 154, 162, 0.15);
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: 0 6px 16px rgba(255, 154, 162, 0.18);
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .folder-card:active {
-            transform: scale(0.97);
-            background: #ffccd5;
+        .folder-card:hover, .folder-card:active {
+            transform: translateY(-3deg) scale(1.02);
+            background: linear-gradient(135deg, #ffffff, #ffe4e9);
+            box-shadow: 0 10px 22px rgba(255, 77, 109, 0.25);
+            border-color: #ff4d6d;
         }
 
         .folder-info {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 16px;
         }
 
         .folder-icon {
-            font-size: 1.8em;
+            font-size: 2em;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .folder-name {
-            font-size: 1.2em;
-            font-weight: bold;
+            font-size: 1.25em;
+            font-weight: 600;
             color: #c9184a;
+            font-family: 'Poppins', sans-serif;
         }
 
         .arrow-icon {
             color: #ff4d6d;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.3em;
+            transition: transform 0.2s ease;
+        }
+
+        .folder-card:hover .arrow-icon {
+            transform: translateX(4px);
         }
 
         /* SCHERMATE DELLE DISPENSE SINGOLE */
         .sub-screen {
             display: none;
             text-align: left;
-            animation: fadeIn 0.4s ease-in-out;
+            animation: slideUp 0.35s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(18px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .sub-screen h2 {
-            color: #ff4d6d;
-            font-size: 1.5em;
-            margin-bottom: 15px;
+        /* STILI PER TITOLI E SOTTOTITOLI STILOSI CON FONT RAFFINATI */
+        .stylish-title {
+            font-family: 'Dancing Script', cursive;
+            color: #ff2a6d;
+            font-size: 2.6em;
+            font-weight: 700;
             text-align: center;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            transform: rotate(-2deg);
+            display: block;
+            text-shadow: 1px 2px 3px rgba(255, 77, 109, 0.2);
+        }
+
+        .stylish-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 600;
+            color: #800f2f;
+            font-size: 0.95em;
+            text-align: center;
+            line-height: 1.45;
+            margin-bottom: 22px;
+            display: block;
+            padding: 0 5px;
         }
 
         .btn-back {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             width: 100%;
-            padding: 12px;
-            margin-top: 20px;
-            background-color: #ff4d6d;
+            padding: 14px;
+            margin-top: 22px;
+            background: linear-gradient(135deg, #ff4d6d, #ff758f);
             color: white;
             border: none;
             border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.95em;
+            font-weight: 600;
+            font-size: 0.98em;
             text-align: center;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+            box-shadow: 0 6px 16px rgba(255, 77, 109, 0.35);
+            transition: all 0.2s ease;
         }
 
         .btn-back:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
 
-        /* Stili specifici per i contenuti delle 3 cartelle */
+        /* CARTELLA 1: MEMORIES */
         .gallery {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .gallery img {
+        .gallery-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(255, 120, 150, 0.2);
+            height: 125px;
+            position: relative;
+            background: #fff0f3;
+            border: 2px solid #ffccd5;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: scale(1.03) rotate(1deg);
+        }
+
+        .gallery-card img {
             width: 100%;
-            height: 110px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
-        .letter-content {
-            background: #fff9fa;
+        /* CARTELLA 2: LETTERINA */
+        .letter-paper {
+            background: rgba(255, 252, 245, 0.95);
             border-left: 4px solid #ff4d6d;
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 0.95em;
-            line-height: 1.6;
-            color: #444;
-            max-height: 300px;
+            border-radius: 18px;
+            padding: 20px 18px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(255, 204, 213, 0.5) inset;
+            max-height: 290px;
             overflow-y: auto;
         }
 
-        .music-box {
-            text-align: center;
-            background: #fff0f3;
-            padding: 20px;
+        .letter-paper p {
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: #444;
+            font-weight: 400;
+        }
+
+        /* CARTELLA 3: MUSIC */
+        .song-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .song-card {
+            background: linear-gradient(135deg, #ffffff, #fff0f3);
+            border: 1.5px solid #ffccd5;
             border-radius: 18px;
-            border: 2px dashed #ffb3c1;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 4px 12px rgba(255, 154, 162, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .song-card:hover {
+            transform: translateY(-2deg);
+            box-shadow: 0 8px 18px rgba(255, 77, 109, 0.22);
+            border-color: #ff4d6d;
+        }
+
+        .song-cover {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4em;
+            flex-shrink: 0;
+            box-shadow: 0 3px 8px rgba(255, 77, 109, 0.3);
+        }
+
+        .song-details {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .song-title {
+            font-weight: 600;
+            color: #2b2b2b;
+            font-size: 0.98em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .song-artist {
+            font-size: 0.82em;
+            color: #ff4d6d;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .play-btn {
+            color: #ff4d6d;
+            font-size: 1.3em;
+            opacity: 0.85;
         }
     </style>
 </head>
 <body>
+
+    <!-- Contenitore cuoricini animati generati via JS -->
+    <div id="hearts-container"></div>
 
     <div class="container">
 
         <!-- FASE 1 -->
         <div id="step-1">
             <div class="photo-space">
-                <img src="foto.jpg" alt="Foto" onerror="this.style.display='none'; this.parentElement.innerText='[Spazio per la tua foto ❤️]';">
+                <img src="foto.jpg" alt="La Nostra Foto" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#ff4d6d; font-weight:600; font-size:1.05em; padding:15px;\'>📸 [Foto Insieme] ❤️</span>';">
             </div>
 
             <h1 class="question">Bimba sei pronta per vedere la tua sorpresina?</h1>
@@ -377,7 +584,6 @@
         <!-- FASE 3: MENU DISPENSE PRINCIPALE -->
         <div id="step-3">
             <h1 class="menu-title">Sorpresa! ❤️</h1>
-            <p class="days-header">Insieme da <span id="days-counter">...</span> giorni</p>
 
             <div class="folder-grid">
                 
@@ -390,11 +596,11 @@
                     <span class="arrow-icon">➔</span>
                 </div>
 
-                <!-- CARTELLA 2: LETTERA -->
+                <!-- CARTELLA 2: LETTERINA -->
                 <div class="folder-card" onclick="openFolder('screen-letter')">
                     <div class="folder-info">
                         <span class="folder-icon">✉️</span>
-                        <span class="folder-name">Lettera</span>
+                        <span class="folder-name">Letterina</span>
                     </div>
                     <span class="arrow-icon">➔</span>
                 </div>
@@ -413,37 +619,81 @@
 
         <!-- SCHERMATA 1: MEMORIES -->
         <div id="screen-memories" class="sub-screen">
-            <h2>📸 Memories</h2>
+            <span class="stylish-title">My fav pictures</span>
+            <div style="height: 15px;"></div>
+            
             <div class="gallery">
-                <img src="foto1.jpg" alt="Memoria 1" onerror="this.src='https://via.placeholder.com/150/ffb3c1/ffffff?text=Foto+1'">
-                <img src="foto2.jpg" alt="Memoria 2" onerror="this.src='https://via.placeholder.com/150/ffb3c1/ffffff?text=Foto+2'">
-                <img src="foto3.jpg" alt="Memoria 3" onerror="this.src='https://via.placeholder.com/150/ffb3c1/ffffff?text=Foto+3'">
-                <img src="foto4.jpg" alt="Memoria 4" onerror="this.src='https://via.placeholder.com/150/ffb3c1/ffffff?text=Foto+4'">
+                <div class="gallery-card">
+                    <img src="foto1.jpg" alt="Foto 1" onerror="this.src='https://placehold.co/300x300/ffb3c1/ffffff?text=Ricordo+1'">
+                </div>
+                <div class="gallery-card">
+                    <img src="foto2.jpg" alt="Foto 2" onerror="this.src='https://placehold.co/300x300/ffccd5/ffffff?text=Ricordo+2'">
+                </div>
+                <div class="gallery-card">
+                    <img src="foto3.jpg" alt="Foto 3" onerror="this.src='https://placehold.co/300x300/ff4d6d/ffffff?text=Ricordo+3'">
+                </div>
+                <div class="gallery-card">
+                    <img src="foto4.jpg" alt="Foto 4" onerror="this.src='https://placehold.co/300x300/c9184a/ffffff?text=Ricordo+4'">
+                </div>
             </div>
+            
             <button class="btn-back" onclick="backToMenu()">⬅️ Torna al Menu</button>
         </div>
 
-        <!-- SCHERMATA 2: LETTERA -->
+        <!-- SCHERMATA 2: LETTERINA -->
         <div id="screen-letter" class="sub-screen">
-            <h2>✉️ La mia Lettera</h2>
-            <div class="letter-content">
+            <span class="stylish-title">Letterina per te Bimba</span>
+            <span class="stylish-subtitle">Cosi ogni volta che la leggerai saprai benissimo quanto sei importante per me</span>
+            
+            <div class="letter-paper">
                 <p>
                     Piccola mia,<br><br>
-                    Ho pensato di crearti questo angolo speciale per ricordarti ogni giorno quanto sei importante per me. Ogni momento passato insieme a te è unico e prezioso.<br><br>
-                    Grazie per sorridere sempre e per rendere la mia vita così bella. Ti amo immensamente! ❤️
+                    Ho creato questo angolino speciale solo ed esclusivamente per te. Volevo un posto che fosse soltanto nostro, dove puoi venire ogni volta che hai voglia di sorridere o di sentirti coccolata.<br><br>
+                    Ogni singolo momento passato insieme a te è una conferma di quanto io sia fortunato ad averti al mio fianco. Sei la mia gioia, la mia risata più bella e la persona più speciale della mia vita.<br><br>
+                    Ti amo con tutto il cuore! ❤️
                 </p>
             </div>
+            
             <button class="btn-back" onclick="backToMenu()">⬅️ Torna al Menu</button>
         </div>
 
         <!-- SCHERMATA 3: MUSIC -->
         <div id="screen-music" class="sub-screen">
-            <h2>🎵 La Nostra Canzone</h2>
-            <div class="music-box">
-                <p style="font-weight: bold; color: #ff4d6d; margin-bottom: 10px;">La colonna sonora di noi due ❤️</p>
-                <!-- Puoi incollare qui un player di Spotify o un brano audio -->
-                <p style="font-size: 0.9em; color: #666;">Ascolta la canzone che mi fa sempre pensare a te!</p>
+            <span class="stylish-title">Le mie canzoni preferite</span>
+            <span class="stylish-subtitle">Che mi fanno pensare sempre a te</span>
+            
+            <div class="song-list">
+                <!-- Canzone 1 -->
+                <div class="song-card">
+                    <div class="song-cover">🎵</div>
+                    <div class="song-details">
+                        <div class="song-title">Nome Canzone 1</div>
+                        <div class="song-artist">Artista / La nostra prima canzone</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <!-- Canzone 2 -->
+                <div class="song-card">
+                    <div class="song-cover">🎶</div>
+                    <div class="song-details">
+                        <div class="song-title">Nome Canzone 2</div>
+                        <div class="song-artist">Artista / Mi ricorda il tuo sorriso</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <!-- Canzone 3 -->
+                <div class="song-card">
+                    <div class="song-cover">🎧</div>
+                    <div class="song-details">
+                        <div class="song-title">Nome Canzone 3</div>
+                        <div class="song-artist">Artista / Dedicata a te Bimba</div>
+                    </div>
+                    <div class="play-btn">▶</div>
+                </div>
             </div>
+
             <button class="btn-back" onclick="backToMenu()">⬅️ Torna al Menu</button>
         </div>
 
@@ -451,12 +701,31 @@
 
     <script>
         const CORRECT_PIN = "2609";
-        const startDate = new Date(2023, 8, 26); // Imposta la vostra data (Anno, Mese-1, Giorno)
-
         let currentPin = "";
 
+        // Generazione cuoricini di sfondo fluttuanti
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartIcons = ['❤️', '💖', '💕', '💗', '✨'];
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-particle';
+                heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
         function clickNo() {
-            document.getElementById('no-warning').style.display = 'block';
+            const warning = document.getElementById('no-warning');
+            warning.style.display = 'block';
+            // Riavvia l'animazione shake
+            warning.style.animation = 'none';
+            warning.offsetHeight; 
+            warning.style.animation = 'shake 0.4s ease-in-out';
         }
 
         function goToStep2() {
@@ -498,28 +767,21 @@
             if (currentPin === CORRECT_PIN) {
                 document.getElementById('step-2').style.display = 'none';
                 document.getElementById('step-3').style.display = 'block';
-                calculateDays();
             } else {
-                document.getElementById('error-msg').innerText = "Codice errato! Riprova ❤️";
+                const errorMsg = document.getElementById('error-msg');
+                errorMsg.innerText = "Codice errato! Riprova ❤️";
                 currentPin = "";
                 updateDots();
             }
         }
 
-        function calculateDays() {
-            const today = new Date();
-            const timeDiff = today - startDate;
-            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            document.getElementById('days-counter').innerText = days;
-        }
-
-        // Funzione per Aprire una cartella
+        // Aprire la cartella selezionata
         function openFolder(folderId) {
             document.getElementById('step-3').style.display = 'none';
             document.getElementById(folderId).style.display = 'block';
         }
 
-        // Funzione per Tornare al Menu Principale delle dispense
+        // Torna al menu principale delle 3 dispense
         function backToMenu() {
             const subScreens = document.querySelectorAll('.sub-screen');
             subScreens.forEach(screen => screen.style.display = 'none');
