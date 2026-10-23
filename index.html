@@ -3,214 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sorpresina Per Te ❤️🌹</title>
-
-    <!-- Google Fonts: Dancing Script per titoli eleganti calligrafici, Montserrat per il testo di sistema, Playfair Display per accenti chic -->
+    <title>Sorpresina ❤️</title>
+    <!-- Font eleganti e romantici da Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 50%, #ffccd5 100%);
-            background-size: 200% 200%;
-            animation: gradientBG 10s ease infinite;
+            background: linear-gradient(180deg, #ffeef2 0%, #ffd1dc 50%, #fec5d3 100%);
             color: #4a4a4a;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 15px;
-            overflow-x: hidden;
             position: relative;
+            overflow-x: hidden;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Petali di rosa fluttuanti di sfondo */
-        .rose-particle {
+        /* SFONDO ANIMATO CON ROSE E PETALI */
+        .petals-container {
             position: fixed;
-            font-size: 22px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            z-index: 0;
-            animation: floatUp 8s linear infinite;
-            bottom: -35px;
-            filter: drop-shadow(0 2px 4px rgba(255, 77, 109, 0.3));
+            z-index: 1;
+            overflow: hidden;
         }
 
-        @keyframes floatUp {
+        .petal {
+            position: absolute;
+            top: -10%;
+            font-size: 1.4rem;
+            opacity: 0.7;
+            animation: floatDown 9s linear infinite;
+        }
+
+        @keyframes floatDown {
             0% {
-                transform: translateY(0) rotate(0deg) scale(0.7);
-                opacity: 0;
-            }
-            20% {
+                transform: translateY(0) rotate(0deg) translateX(0);
                 opacity: 0.9;
             }
+            50% {
+                transform: translateY(50vh) rotate(180deg) translateX(25px);
+            }
             100% {
-                transform: translateY(-105vh) rotate(360deg) scale(1.2);
+                transform: translateY(110vh) rotate(360deg) translateX(-20px);
                 opacity: 0;
             }
         }
 
+        /* SCHERMO PRINCIPALE TELEFONO */
         .container {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            background: rgba(255, 255, 255, 0.96);
             width: 100%;
-            max-width: 410px;
+            max-width: 390px;
             min-height: 580px;
-            border-radius: 30px;
-            padding: 26px 20px;
-            box-shadow: 0 15px 35px rgba(230, 80, 115, 0.25),
-                        0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+            border-radius: 28px;
+            padding: 25px 20px;
+            box-shadow: 0 12px 35px rgba(230, 77, 109, 0.25);
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             position: relative;
             z-index: 10;
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 182, 193, 0.5);
+            backdrop-filter: blur(5px);
         }
 
-        /* Cornici Floreali su Angoli Container */
-        .corner-rose {
-            position: absolute;
-            font-size: 1.5em;
-            pointer-events: none;
-            opacity: 0.85;
-            z-index: 12;
-        }
-        .corner-top-left { top: 12px; left: 14px; transform: rotate(-20deg); }
-        .corner-top-right { top: 12px; right: 14px; transform: rotate(20deg); }
-        .corner-bottom-left { bottom: 12px; left: 14px; transform: rotate(-70deg); }
-        .corner-bottom-right { bottom: 12px; right: 14px; transform: rotate(70deg); }
-
-        /* FASE 1 */
+        /* FASE 1: PRIMA SCHERMATA */
         .photo-space {
             width: 100%;
-            height: 210px;
-            border-radius: 22px;
+            height: 220px;
+            border-radius: 20px;
             overflow: hidden;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             background-color: #fff0f3;
             display: flex;
             justify-content: center;
             align-items: center;
             border: 2px dashed #ffb3c1;
-            box-shadow: 0 8px 18px rgba(255, 120, 150, 0.15);
-            animation: pulseGlow 3s infinite alternate;
-        }
-
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 5px 15px rgba(255, 77, 109, 0.2); }
-            100% { box-shadow: 0 10px 25px rgba(255, 77, 109, 0.45); }
+            box-shadow: 0 6px 15px rgba(255, 154, 162, 0.2);
+            position: relative;
         }
 
         .photo-space img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .photo-space:hover img {
-            transform: scale(1.05);
         }
 
         h1.question {
             color: #ff3366;
-            font-size: 1.35em;
-            line-height: 1.45;
+            font-size: 1.4em;
+            line-height: 1.4;
             margin-bottom: 22px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .btn-group {
             display: flex;
             justify-content: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .btn-choice {
             flex: 1;
-            padding: 15px;
+            padding: 14px;
             font-size: 1.1em;
-            font-weight: 600;
+            font-weight: bold;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .btn-yes {
-            background: linear-gradient(135deg, #ff4d6d, #ff758f);
+            background: linear-gradient(135deg, #ff4d6d, #ff3366);
             color: white;
-            box-shadow: 0 6px 18px rgba(255, 77, 109, 0.4);
-            animation: heartBeat 2s infinite;
-        }
-
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
         }
 
         .btn-yes:active {
-            transform: scale(0.95) !important;
+            transform: scale(0.95);
         }
 
         .btn-no {
             background-color: #f1f2f6;
-            color: #718093;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            color: #707070;
         }
 
         #no-warning {
             display: none;
             color: #ff3366;
-            font-weight: 600;
+            font-weight: bold;
             font-size: 0.9em;
-            margin-top: 16px;
-            animation: shake 0.4s ease-in-out;
+            margin-top: 15px;
         }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-6px); }
-            40%, 80% { transform: translateX(6px); }
-        }
-
-        /* FASE 2: TASTIERA PIN */
+        /* FASE 2: SCHERMATA PIN */
         #step-2 {
             display: none;
-            animation: fadeInScale 0.4s ease-out;
-        }
-
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.92); }
-            to { opacity: 1; transform: scale(1); }
+            animation: fadeIn 0.4s ease-out;
         }
 
         .lock-icon {
-            font-size: 2.5em;
-            margin-bottom: 6px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            font-size: 2.2em;
+            margin-bottom: 8px;
         }
 
         .hint-text {
@@ -218,28 +168,31 @@
             font-weight: 600;
             font-size: 0.95em;
             margin-bottom: 22px;
+            background: #fff0f3;
+            padding: 8px 12px;
+            border-radius: 12px;
+            border: 1px solid #ffccd5;
         }
 
         .pin-dots {
             display: flex;
             justify-content: center;
-            gap: 16px;
+            gap: 15px;
             margin-bottom: 25px;
         }
 
         .dot {
-            width: 18px;
-            height: 18px;
-            border: 2px solid #ff4d6d;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ff3366;
             border-radius: 50%;
             background-color: transparent;
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.2s;
         }
 
         .dot.filled {
-            background-color: #ff4d6d;
-            box-shadow: 0 0 12px rgba(255, 77, 109, 0.6);
-            transform: scale(1.15);
+            background-color: #ff3366;
+            box-shadow: 0 0 8px rgba(255, 51, 102, 0.5);
         }
 
         .keypad {
@@ -247,38 +200,38 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
-            max-width: 280px;
+            max-width: 270px;
             margin: 0 auto;
         }
 
         .key {
-            width: 72px;
-            height: 72px;
+            width: 68px;
+            height: 68px;
             border-radius: 50%;
-            background: rgba(255, 240, 243, 0.9);
+            background-color: #fff0f3;
             color: #ff3366;
-            font-size: 1.6em;
-            font-weight: 600;
+            font-size: 1.5em;
+            font-weight: bold;
             border: 1px solid #ffccd5;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(255, 120, 150, 0.12);
-            transition: all 0.15s ease;
+            box-shadow: 0 4px 8px rgba(255, 154, 162, 0.15);
+            transition: background-color 0.15s, transform 0.1s;
         }
 
         .key:active {
-            background-color: #ff4d6d;
+            background-color: #ff3366;
             color: white;
             transform: scale(0.92);
         }
 
         .key-del {
-            font-size: 1.2em;
+            font-size: 1.1em;
             background-color: #f8f9fa;
-            color: #576574;
-            border: 1px solid #e2e8f0;
+            color: #666;
+            border: none;
         }
 
         .key-empty {
@@ -287,376 +240,286 @@
 
         #error-msg {
             color: #ff3366;
-            font-weight: 600;
+            font-weight: bold;
             font-size: 0.9em;
-            margin-top: 16px;
-            min-height: 22px;
+            margin-top: 15px;
+            min-height: 20px;
         }
 
         /* FASE 3: MENU DISPENSE PRINCIPALE */
         #step-3 {
             display: none;
-            animation: fadeInScale 0.4s ease-out;
+            animation: fadeIn 0.5s ease-out;
         }
 
         .menu-title {
-            font-family: 'Dancing Script', cursive;
-            color: #ff2a6d;
-            font-size: 2.8em;
-            font-weight: 700;
-            margin-bottom: 22px;
-            text-shadow: 1px 2px 4px rgba(255, 77, 109, 0.2);
-            display: inline-block;
-            transform: rotate(-2deg);
+            font-family: 'Great Vibes', cursive;
+            color: #ff3366;
+            font-size: 2.7em;
+            margin-bottom: 2px;
+            text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.5);
         }
 
         .folder-grid {
             display: flex;
             flex-direction: column;
             gap: 16px;
+            margin-top: 15px;
         }
 
         .folder-card {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1.5px solid rgba(255, 179, 193, 0.8);
+            background: linear-gradient(135deg, #ffffff 0%, #fff0f3 100%);
+            border: 2px solid #ffccd5;
             border-radius: 22px;
-            padding: 18px 22px;
+            padding: 18px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-            box-shadow: 0 6px 16px rgba(255, 154, 162, 0.18);
-            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 6px 15px rgba(255, 154, 162, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
             position: relative;
             overflow: hidden;
         }
 
-        .folder-card::before {
-            content: "🌹";
+        .folder-card::after {
+            content: '🌹';
             position: absolute;
             right: -8px;
             bottom: -8px;
-            font-size: 2.2em;
+            font-size: 1.8em;
             opacity: 0.15;
-            pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
-        .folder-card:hover::before {
-            opacity: 0.35;
-            transform: rotate(15deg) scale(1.1);
-        }
-
-        .folder-card:hover, .folder-card:active {
-            transform: translateY(-3deg) scale(1.02);
-            background: linear-gradient(135deg, #ffffff, #ffe4e9);
-            box-shadow: 0 10px 22px rgba(255, 77, 109, 0.25);
-            border-color: #ff4d6d;
+        .folder-card:active {
+            transform: scale(0.97);
+            background: #ffe4e9;
         }
 
         .folder-info {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 15px;
         }
 
         .folder-icon {
-            font-size: 2em;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            font-size: 1.8em;
         }
 
         .folder-name {
-            font-size: 1.25em;
-            font-weight: 600;
-            color: #c9184a;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #ff3366;
         }
 
         .arrow-icon {
-            color: #ff4d6d;
+            color: #ff3366;
             font-weight: bold;
-            font-size: 1.3em;
-            transition: transform 0.2s ease;
-        }
-
-        .folder-card:hover .arrow-icon {
-            transform: translateX(4px);
+            font-size: 1.2em;
         }
 
         /* SCHERMATE DELLE DISPENSE SINGOLE */
         .sub-screen {
             display: none;
             text-align: left;
-            animation: slideUp 0.35s ease-out;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(18px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* TITOLI E SOTTOTITOLI STILOSI CON FONT RAFFINATI */
-        .stylish-title {
-            font-family: 'Dancing Script', cursive;
-            color: #ff2a6d;
-            font-size: 2.5em;
-            font-weight: 700;
+        .section-header {
             text-align: center;
-            line-height: 1.2;
-            margin-bottom: 6px;
-            transform: rotate(-2deg);
-            display: block;
-            text-shadow: 1px 2px 3px rgba(255, 77, 109, 0.2);
+            margin-bottom: 20px;
         }
 
-        .stylish-subtitle {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 600;
-            color: #800f2f;
-            font-size: 0.9em;
-            text-align: center;
-            line-height: 1.45;
-            margin-bottom: 20px;
-            display: block;
-            padding: 0 5px;
+        .styled-title {
+            font-family: 'Great Vibes', cursive;
+            color: #ff3366;
+            font-size: 2.3em;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.4);
+            margin-bottom: 4px;
+        }
+
+        .styled-subtitle {
+            font-family: 'Dancing Script', cursive;
+            color: #ff6584;
+            font-size: 1.25em;
+            font-weight: 700;
+            line-height: 1.3;
         }
 
         .btn-back {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            display: block;
             width: 100%;
-            padding: 14px;
+            padding: 13px;
             margin-top: 22px;
-            background: linear-gradient(135deg, #ff4d6d, #ff758f);
+            background: linear-gradient(135deg, #ff4d6d, #ff3366);
             color: white;
             border: none;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.98em;
+            font-weight: bold;
+            font-size: 0.95em;
             text-align: center;
             cursor: pointer;
-            box-shadow: 0 6px 16px rgba(255, 77, 109, 0.35);
-            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(255, 51, 102, 0.35);
         }
 
         .btn-back:active {
-            transform: scale(0.96);
+            transform: scale(0.97);
         }
 
-        /* CARTELLA 1: MEMORIES (CARD FOTO + DIDASCALIE) */
-        .memories-grid {
+        /* GALLERIA MEMORIES ALTERNATA */
+        .memories-container {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 15px;
             max-height: 380px;
             overflow-y: auto;
-            padding-right: 4px;
+            padding-right: 5px;
         }
 
         .memory-card {
-            background: #ffffff;
-            border: 1.5px solid #ffccd5;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 6px 16px rgba(255, 120, 150, 0.15);
-            transition: transform 0.25s ease;
-            position: relative;
-        }
-
-        .memory-card:hover {
-            transform: translateY(-2deg);
-        }
-
-        .memory-img-box {
-            width: 100%;
-            height: 170px;
             background: #fff0f3;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .memory-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .memory-caption-box {
-            padding: 12px 15px;
-            background: linear-gradient(180deg, #ffffff 0%, #fff0f3 100%);
-            border-top: 1px solid #ffe4e9;
-        }
-
-        .memory-title {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: #c9184a;
-            font-size: 1.05em;
-            margin-bottom: 4px;
+            border: 1.5px solid #ffccd5;
+            border-radius: 18px;
+            padding: 10px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.25);
+            position: relative;
         }
 
-        .memory-desc {
+        /* Foto quasi quadrate */
+        .memory-photo {
+            width: 105px;
+            height: 100px;
+            aspect-ratio: 1.05 / 1;
+            border-radius: 14px;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+            flex-shrink: 0;
+            background-color: #ffd1dc;
+        }
+
+        .memory-text {
             font-size: 0.85em;
             color: #555;
             line-height: 1.4;
-            font-weight: 400;
+            flex-grow: 1;
         }
 
-        /* CARTELLA 2: LETTERINA (PERGAMENA ROMANTICA CON ROSE) */
-        .letter-scroll-wrapper {
-            max-height: 350px;
-            overflow-y: auto;
-            padding-right: 4px;
+        .memory-text strong {
+            color: #ff3366;
+            display: block;
+            font-size: 1.05em;
+            margin-bottom: 3px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3em;
         }
 
-        .letter-paper {
-            background: linear-gradient(135deg, #fffcf7 0%, #fff5f7 100%);
-            border-left: 4px solid #ff4d6d;
-            border-right: 1px solid #ffe4e9;
-            border-top: 1px solid #ffe4e9;
-            border-bottom: 1px solid #ffe4e9;
+        /* ZIG-ZAG ALTERNATO: PARI E DISPARI */
+        .memory-card.reverse {
+            flex-direction: row-reverse;
+            text-align: right;
+            background: #fff7f9;
+        }
+
+        /* SCHEDA LETTERINA */
+        .parchment {
+            background: #fffaf0;
+            border: 2px solid #ffccd5;
             border-radius: 18px;
-            padding: 22px 18px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 204, 213, 0.4) inset;
+            padding: 20px;
+            box-shadow: inset 0 0 15px rgba(255, 218, 185, 0.4), 0 5px 15px rgba(255, 182, 193, 0.2);
             position: relative;
+            max-height: 340px;
+            overflow-y: auto;
         }
 
-        .letter-paper::after {
-            content: "🌹";
+        .parchment::before {
+            content: '🌹';
             position: absolute;
-            bottom: 12px;
-            right: 14px;
-            font-size: 1.6em;
+            top: 10px;
+            right: 12px;
+            font-size: 1.2em;
             opacity: 0.8;
         }
 
-        .letter-paper p {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.96em;
-            line-height: 1.8;
-            color: #333;
-            font-weight: 400;
-            white-space: pre-line;
+        .letter-text {
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: #4a4a4a;
         }
 
-        .letter-paper .salutation {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8em;
-            color: #ff2a6d;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .letter-paper .closing {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8em;
-            color: #ff2a6d;
-            margin-top: 15px;
-            display: block;
-            text-align: right;
-        }
-
-        /* CARTELLA 3: MUSIC (3 SCHEDE CANZONI CON FRASE DEDICATA) */
-        .song-list {
+        /* SCHEDA MUSIC */
+        .songs-list {
             display: flex;
             flex-direction: column;
             gap: 14px;
             max-height: 360px;
             overflow-y: auto;
-            padding-right: 4px;
         }
 
         .song-card {
-            background: linear-gradient(135deg, #ffffff, #fff0f3);
+            background: #fff0f3;
             border: 1.5px solid #ffccd5;
-            border-radius: 20px;
-            padding: 15px;
-            box-shadow: 0 4px 14px rgba(255, 154, 162, 0.15);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
             position: relative;
         }
 
-        .song-card:hover {
-            transform: translateY(-2deg);
-            box-shadow: 0 8px 18px rgba(255, 77, 109, 0.22);
-            border-color: #ff4d6d;
-        }
-
-        .song-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-
-        .song-cover {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #ff4d6d, #ff85a2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.4em;
-            flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
-        }
-
-        .song-details {
-            flex-grow: 1;
-            overflow: hidden;
-        }
-
         .song-title {
-            font-weight: 700;
-            color: #2b2b2b;
             font-size: 1em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-weight: 700;
+            color: #ff3366;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .song-artist {
-            font-size: 0.82em;
-            color: #ff4d6d;
-            font-weight: 600;
+            font-size: 0.85em;
+            color: #888;
             margin-top: 2px;
+            margin-bottom: 8px;
         }
 
-        .song-dedication {
-            background: rgba(255, 255, 255, 0.8);
-            border-left: 3px solid #ff4d6d;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.82em;
+        .song-note {
+            font-size: 0.85em;
             color: #555;
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 10px;
+            border-left: 3px solid #ff3366;
             font-style: italic;
-            line-height: 1.4;
         }
     </style>
 </head>
 <body>
 
-    <!-- Rose fluttuanti animate sullo sfondo -->
-    <div id="roses-container"></div>
+    <!-- Sfondo animato con rose e petali -->
+    <div class="petals-container">
+        <div class="petal" style="left: 10%; animation-delay: 0s;">🌹</div>
+        <div class="petal" style="left: 25%; animation-delay: 3s;">🌸</div>
+        <div class="petal" style="left: 45%; animation-delay: 1s;">🌹</div>
+        <div class="petal" style="left: 65%; animation-delay: 5s;">🌸</div>
+        <div class="petal" style="left: 85%; animation-delay: 2s;">🌹</div>
+    </div>
 
     <div class="container">
-        <!-- Decorazioni con rose agli angoli della scheda -->
-        <span class="corner-rose corner-top-left">🌹</span>
-        <span class="corner-rose corner-top-right">🌹</span>
-        <span class="corner-rose corner-bottom-left">🌹</span>
-        <span class="corner-rose corner-bottom-right">🌹</span>
 
-        <!-- FASE 1 -->
+        <!-- FASE 1: PRIMA SCHERMATA CON FOTO E DOMANDA -->
         <div id="step-1">
             <div class="photo-space">
-                <img src="foto.jpg" alt="La Nostra Foto" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#ff4d6d; font-weight:600; font-size:1.05em; padding:15px;\'>🌹 [La Nostra Foto Speciale] ❤️</span>';">
+                <img src="foto.jpg" alt="Noi insieme" onerror="this.style.display='none'; this.parentElement.innerText='[Carica foto.jpg ❤️]';">
             </div>
 
             <h1 class="question">Bimba sei pronta per vedere la tua sorpresina? 🌹</h1>
@@ -666,13 +529,13 @@
                 <button class="btn-choice btn-no" onclick="clickNo()">No 😜</button>
             </div>
 
-            <p id="no-warning">Risposta sbagliata! Devi per forza cliccare "Sì"! 😉🌹</p>
+            <p id="no-warning">Risposta sbagliata! Devi per forza cliccare "Sì"! 😉</p>
         </div>
 
-        <!-- FASE 2: TASTIERA PIN -->
+        <!-- FASE 2: TASTIERA PIN STILE TELEFONO -->
         <div id="step-2">
-            <div class="lock-icon">🔒🌹</div>
-            <p class="hint-text">INDIZIO: Il giorno del nostro primo bacio</p>
+            <div class="lock-icon">🔒</div>
+            <p class="hint-text">INDIZIO: Il giorno del nostro primo bacio 🌹</p>
 
             <div class="pin-dots">
                 <div class="dot" id="dot-0"></div>
@@ -699,13 +562,13 @@
             <p id="error-msg"></p>
         </div>
 
-        <!-- FASE 3: MENU DISPENSE PRINCIPALE -->
+        <!-- FASE 3: MENU DELLE TRE DISPENSE -->
         <div id="step-3">
-            <h1 class="menu-title">Sorpresa Bimba! 🌹❤️</h1>
+            <h1 class="menu-title">Sorpresina 🌹</h1>
 
             <div class="folder-grid">
                 
-                <!-- CARTELLA 1: MEMORIES -->
+                <!-- DISPENSA 1: MEMORIES -->
                 <div class="folder-card" onclick="openFolder('screen-memories')">
                     <div class="folder-info">
                         <span class="folder-icon">📸</span>
@@ -714,7 +577,7 @@
                     <span class="arrow-icon">➔</span>
                 </div>
 
-                <!-- CARTELLA 2: LETTERINA -->
+                <!-- DISPENSA 2: LETTERINA -->
                 <div class="folder-card" onclick="openFolder('screen-letter')">
                     <div class="folder-info">
                         <span class="folder-icon">✉️</span>
@@ -723,7 +586,7 @@
                     <span class="arrow-icon">➔</span>
                 </div>
 
-                <!-- CARTELLA 3: MUSIC -->
+                <!-- DISPENSA 3: MUSIC -->
                 <div class="folder-card" onclick="openFolder('screen-music')">
                     <div class="folder-info">
                         <span class="folder-icon">🎵</span>
@@ -737,128 +600,98 @@
 
         <!-- SCHERMATA 1: MEMORIES -->
         <div id="screen-memories" class="sub-screen">
-            <span class="stylish-title">My fav pictures 🌹</span>
-            <span class="stylish-subtitle">I nostri momenti più belli custoditi insieme</span>
+            <div class="section-header">
+                <h2 class="styled-title">My fav pictures 🌹</h2>
+            </div>
             
-            <div class="memories-grid">
-                <!-- Memory 1 -->
+            <div class="memories-container">
+                <!-- Foto 1 (Foto a sinistra) -->
                 <div class="memory-card">
-                    <div class="memory-img-box">
-                        <img src="foto1.jpg" alt="Il nostro primo appuntamento" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding:40px; text-align:center; color:#ff4d6d; font-weight:600;\'>🌹 Foto 1</div>';">
-                    </div>
-                    <div class="memory-caption-box">
-                        <div class="memory-title">Il nostro primo appuntamento <span>🌹</span></div>
-                        <div class="memory-desc">Quel giorno il cuore mi batteva a mille, ma appena ti ho vista ho capito subito che eri tu la persona speciale.</div>
+                    <img class="memory-photo" src="foto1.jpg" alt="Foto 1" onerror="this.src='https://via.placeholder.com/150/ffb3c1/ffffff?text=foto1.jpg'">
+                    <div class="memory-text">
+                        <strong>Primo Appuntamento</strong>
+                        Uno dei momenti più belli e indimenticabili insieme a te.
                     </div>
                 </div>
 
-                <!-- Memory 2 -->
-                <div class="memory-card">
-                    <div class="memory-img-box">
-                        <img src="foto2.jpg" alt="Quel giorno indimenticabile" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding:40px; text-align:center; color:#ff4d6d; font-weight:600;\'>🌹 Foto 2</div>';">
-                    </div>
-                    <div class="memory-caption-box">
-                        <div class="memory-title">Quel giorno indimenticabile <span>✨</span></div>
-                        <div class="memory-desc">Insieme a ridere per ogni piccola cosa. Un ricordo che porto sempre nel cuore.</div>
+                <!-- Foto 2 (Foto a destra - Reverse) -->
+                <div class="memory-card reverse">
+                    <img class="memory-photo" src="foto2.jpg" alt="Foto 2" onerror="this.src='https://via.placeholder.com/150/ffb3c1/ffffff?text=foto2.jpg'">
+                    <div class="memory-text">
+                        <strong>I tuoi sorrisi</strong>
+                        La cosa più bella che possa guardare ogni singolo giorno.
                     </div>
                 </div>
 
-                <!-- Memory 3 -->
+                <!-- Foto 3 (Foto a sinistra) -->
                 <div class="memory-card">
-                    <div class="memory-img-box">
-                        <img src="foto3.jpg" alt="Il nostro viaggio del cuore" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding:40px; text-align:center; color:#ff4d6d; font-weight:600;\'>🌹 Foto 3</div>';">
-                    </div>
-                    <div class="memory-caption-box">
-                        <div class="memory-title">Il nostro viaggio del cuore <span>✈️</span></div>
-                        <div class="memory-desc">Mani nella mano ad esplorare posti nuovi. Con te ogni posto diventa il luogo più bello del mondo.</div>
+                    <img class="memory-photo" src="foto3.jpg" alt="Foto 3" onerror="this.src='https://via.placeholder.com/150/ffb3c1/ffffff?text=foto3.jpg'">
+                    <div class="memory-text">
+                        <strong>Gite & Viaggi</strong>
+                        Ogni posto con te diventa speciale ed magico.
                     </div>
                 </div>
 
-                <!-- Memory 4 -->
-                <div class="memory-card">
-                    <div class="memory-img-box">
-                        <img src="foto4.jpg" alt="Insieme ovunque" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding:40px; text-align:center; color:#ff4d6d; font-weight:600;\'>🌹 Foto 4</div>';">
-                    </div>
-                    <div class="memory-caption-box">
-                        <div class="memory-title">Insieme ovunque <span>❤️</span></div>
-                        <div class="memory-desc">Non importa dove andiamo o cosa facciamo, l'unica cosa importante per me è farla al tuo fianco.</div>
+                <!-- Foto 4 (Foto a destra - Reverse) -->
+                <div class="memory-card reverse">
+                    <img class="memory-photo" src="foto4.jpg" alt="Foto 4" onerror="this.src='https://via.placeholder.com/150/ffb3c1/ffffff?text=foto4.jpg'">
+                    <div class="memory-text">
+                        <strong>Noi due ❤️</strong>
+                        Semplicemente noi, complici in tutto.
                     </div>
                 </div>
             </div>
-            
+
             <button class="btn-back" onclick="backToMenu()">⬅️ Torna al Menu</button>
         </div>
 
         <!-- SCHERMATA 2: LETTERINA -->
         <div id="screen-letter" class="sub-screen">
-            <span class="stylish-title">Letterina per te Bimba 🌹</span>
-            <span class="stylish-subtitle">Cosi ogni volta che la leggerai saprai benissimo quanto sei importante per me</span>
-            
-            <div class="letter-scroll-wrapper">
-                <div class="letter-paper">
-                    <span class="salutation">Mio piccolo amore,</span>
-                    <p>Ho creato questo piccolo spazio tutto per te, pieno di rose e di pensieri dolci, perché volevo regalarti qualcosa di speciale che potessi portare sempre con te.
+            <div class="section-header">
+                <h2 class="styled-title">Letterina per te Bimba 🌹</h2>
+                <p class="styled-subtitle">Così ogni volta che la leggerai saprai benissimo quanto sei importante per me</p>
+            </div>
 
-Ogni singolo giorno passato insieme a te mi ricorda quanto io sia fortunato ad averti nella mia vita. Sei il mio primo pensiero al mattino e l'ultimo prima di addormentarmi. Il tuo sorriso ha il potere di illuminare anche le giornate più storte, ed il tuo abbraccio è il posto in cui mi sento più al sicuro in assoluto.
-
-Amo tutto di te: la tua dolcezza, la tua risata contagiosa, i tuoi occhi quando mi guardano e persino i tuoi piccoli momenti di pazzia! Sei una persona rara, profonda e incredibile. 
-
-Spero che ogni volta che aprirai questa schermata, tu possa ricordarti di quanto sei amata e apprezzata. Non dimenticarlo mai: io ci sarò sempre per te, a sostenerti, a ridere con te ed a prendermi cura del tuo cuore.
-
-Sei la mia rosa più bella ed unica. ❤️</p>
-                    <span class="closing">Con tutto il mio amore ❤️🌹</span>
+            <div class="parchment">
+                <div class="letter-text">
+                    Piccola mia,<br><br>
+                    Ho voluto creare questo spazio tutto nostro per lasciarti qualcosa che potrai rileggere ogni volta che ne avrai voglia.<br><br>
+                    Sei una persona infinitamente speciale e porti una luce unica nelle mie giornate. Ogni risata, ogni momento semplice e ogni abbraccio con te acquista un valore immenso.<br><br>
+                    Grazie per quello che sei e per la dolcezza che mi regali sempre.<br><br>
+                    Ti amo immensamente! ❤️
                 </div>
             </div>
-            
+
             <button class="btn-back" onclick="backToMenu()">⬅️ Torna al Menu</button>
         </div>
 
         <!-- SCHERMATA 3: MUSIC -->
         <div id="screen-music" class="sub-screen">
-            <span class="stylish-title">Le mie canzoni preferite 🌹</span>
-            <span class="stylish-subtitle">Che mi fanno pensare sempre a te</span>
-            
-            <div class="song-list">
+            <div class="section-header">
+                <h2 class="styled-title">Le mie canzoni preferite 🌹</h2>
+                <p class="styled-subtitle">Che mi fanno pensare sempre a te</p>
+            </div>
+
+            <div class="songs-list">
                 <!-- Canzone 1 -->
                 <div class="song-card">
-                    <div class="song-header">
-                        <div class="song-cover">🌹</div>
-                        <div class="song-details">
-                            <div class="song-title">Titolo Canzone 1</div>
-                            <div class="song-artist">Artista 1</div>
-                        </div>
-                    </div>
-                    <div class="song-dedication">
-                        "Questa canzone mi riporta subito con la mente ai nostri primi momenti insieme. Ogni nota parla di te!"
-                    </div>
+                    <div class="song-title">🎵 Prima Canzone</div>
+                    <div class="song-artist">Artista 1</div>
+                    <div class="song-note">"Mi ricorda subito il nostro primissimo momento insieme."</div>
                 </div>
 
                 <!-- Canzone 2 -->
                 <div class="song-card">
-                    <div class="song-header">
-                        <div class="song-cover">🎶</div>
-                        <div class="song-details">
-                            <div class="song-title">Titolo Canzone 2</div>
-                            <div class="song-artist">Artista 2</div>
-                        </div>
-                    </div>
-                    <div class="song-dedication">
-                        "Ogni volta che la ascolto in macchina o con le cuffie mi viene spontaneo sorridere pensando al tuo viso."
-                    </div>
+                    <div class="song-title">🎶 Seconda Canzone</div>
+                    <div class="song-artist">Artista 2</div>
+                    <div class="song-note">"La ascolto sempre quando sono in viaggio e penso a te."</div>
                 </div>
 
                 <!-- Canzone 3 -->
                 <div class="song-card">
-                    <div class="song-header">
-                        <div class="song-cover">🎧</div>
-                        <div class="song-details">
-                            <div class="song-title">Titolo Canzone 3</div>
-                            <div class="song-artist">Artista 3</div>
-                        </div>
-                    </div>
-                    <div class="song-dedication">
-                        "È la nostra colonna sonora perfetta, la canzone che mi fa sentire sempre vicino a te anche quando siamo lontani."
-                    </div>
+                    <div class="song-title">🎧 Terza Canzone</div>
+                    <div class="song-artist">Artista 3</div>
+                    <div class="song-note">"La colonna sonora perfetta per noi due."</div>
                 </div>
             </div>
 
@@ -871,28 +704,8 @@ Sei la mia rosa più bella ed unica. ❤️</p>
         const CORRECT_PIN = "2609";
         let currentPin = "";
 
-        // Generazione petali di rosa fluttuanti
-        function createRosePetals() {
-            const container = document.getElementById('roses-container');
-            const roseIcons = ['🌹', '🥀', '🌸', '✨', '💖'];
-            for (let i = 0; i < 16; i++) {
-                const petal = document.createElement('div');
-                petal.className = 'rose-particle';
-                petal.innerText = roseIcons[Math.floor(Math.random() * roseIcons.length)];
-                petal.style.left = Math.random() * 100 + 'vw';
-                petal.style.animationDuration = (Math.random() * 5 + 6) + 's';
-                petal.style.animationDelay = Math.random() * 6 + 's';
-                container.appendChild(petal);
-            }
-        }
-        createRosePetals();
-
         function clickNo() {
-            const warning = document.getElementById('no-warning');
-            warning.style.display = 'block';
-            warning.style.animation = 'none';
-            warning.offsetHeight; 
-            warning.style.animation = 'shake 0.4s ease-in-out';
+            document.getElementById('no-warning').style.display = 'block';
         }
 
         function goToStep2() {
@@ -935,8 +748,7 @@ Sei la mia rosa più bella ed unica. ❤️</p>
                 document.getElementById('step-2').style.display = 'none';
                 document.getElementById('step-3').style.display = 'block';
             } else {
-                const errorMsg = document.getElementById('error-msg');
-                errorMsg.innerText = "Codice errato! Riprova ❤️🌹";
+                document.getElementById('error-msg').innerText = "Codice errato! Riprova ❤️";
                 currentPin = "";
                 updateDots();
             }
