@@ -9,81 +9,86 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            /* Sfondo rosaceo sfumato */
             background: linear-gradient(180deg, #ffe4e9 0%, #ffccd5 100%);
             color: #4a4a4a;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 20px 15px;
-            overflow-x: hidden;
+            padding: 15px;
         }
 
-        /* Scheda principale per Smartphone */
-        .card {
+        /* --- CONTENITORE SCHERMO TELEFONO --- */
+        .mobile-screen {
             background: rgba(255, 255, 255, 0.95);
             width: 100%;
-            max-width: 420px;
-            border-radius: 25px;
+            max-width: 380px;
+            min-height: 580px;
+            border-radius: 30px;
             padding: 25px 20px;
-            box-shadow: 0 10px 25px rgba(255, 154, 162, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 120, 150, 0.3);
             text-align: center;
-            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Spazio riservato per la foto in alto */
+        /* FASE 1: Domanda Iniziale */
+        #step-1 {
+            width: 100%;
+        }
+
         .photo-space {
             width: 100%;
-            max-height: 250px;
-            border-radius: 18px;
+            height: 200px;
+            border-radius: 20px;
             overflow: hidden;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             background-color: #fff0f3;
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         }
 
         .photo-space img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
             object-fit: cover;
         }
 
-        /* Domanda Principale */
         h1.question {
             color: #ff4d6d;
-            font-size: 1.5em;
+            font-size: 1.4em;
             line-height: 1.4;
             margin-bottom: 25px;
             font-weight: 700;
         }
 
-        /* Contenitore per i due pulsanti Si / No */
         .btn-group {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 15px;
+            width: 100%;
         }
 
         .btn-choice {
             flex: 1;
-            padding: 14px 20px;
+            padding: 14px;
             font-size: 1.1em;
             font-weight: bold;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            -webkit-tap-highlight-color: transparent;
         }
 
         .btn-yes {
@@ -92,45 +97,128 @@
             box-shadow: 0 4px 12px rgba(255, 77, 109, 0.4);
         }
 
-        .btn-yes:active {
-            transform: scale(0.95);
-        }
-
         .btn-no {
-            background-color: #c8d6e5;
-            color: #576574;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #e0e0e0;
+            color: #666;
         }
 
-        /* Messaggio simpatico se si clicca "No" */
         #no-warning {
             display: none;
             color: #ff4757;
             font-weight: bold;
-            font-size: 0.95em;
-            margin-top: 10px;
+            font-size: 0.9em;
+            margin-top: 15px;
         }
 
-        /* Sezione Sorpresa Nascosta (Si attiva cliccando "Si") */
-        #surprise-content {
+        /* FASE 2: Schermata di Blocco PIN */
+        #step-2 {
             display: none;
-            margin-top: 20px;
-            border-top: 2px dashed #ffb3c1;
-            padding-top: 20px;
-            animation: fadeIn 0.6s ease-in-out;
+            width: 100%;
+        }
+
+        .lock-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .hint-text {
+            color: #ff4d6d;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        /* Pallini del PIN */
+        .pin-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .dot {
+            width: 14px;
+            height: 14px;
+            border: 2px solid #ff4d6d;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .dot.filled {
+            background-color: #ff4d6d;
+        }
+
+        /* Tastiera Numerica Stile Telefono */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        .key {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background-color: #fff0f3;
+            color: #ff4d6d;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(255, 77, 109, 0.15);
+            transition: transform 0.1s, background-color 0.1s;
+        }
+
+        .key:active {
+            background-color: #ff4d6d;
+            color: white;
+            transform: scale(0.92);
+        }
+
+        .key-del {
+            font-size: 1em;
+            background-color: transparent;
+            box-shadow: none;
+            color: #888;
+        }
+
+        #error-msg {
+            color: #d63031;
+            font-size: 0.85em;
+            height: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* FASE 3: Schermata Finale Sbloccata */
+        #step-3 {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        /* Box Contatore */
+        .unlocked-title {
+            color: #ff4d6d;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
         .counter-box {
             background-color: #fff0f3;
-            border-radius: 15px;
-            padding: 15px;
-            margin: 15px 0;
+            border-radius: 18px;
+            padding: 18px;
+            margin: 20px 0;
+            border: 2px dashed #ffb3c1;
         }
 
         .counter-box p {
@@ -141,11 +229,11 @@
         }
 
         .counter-box h2 {
-            font-size: 1.6em;
+            font-size: 1.7em;
             color: #c9184a;
+            margin-top: 5px;
         }
 
-        /* Lettera / Dedica */
         .letter {
             text-align: left;
             font-size: 0.95em;
@@ -156,36 +244,61 @@
             border-radius: 15px;
             border-left: 4px solid #ff4d6d;
         }
-
-        footer {
-            margin-top: 25px;
-            font-size: 0.85em;
-            color: #a4b0be;
-        }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        
-        <!-- SPAZIO FOTO IN ALTO (Se la foto si chiama foto.jpg) -->
-        <div class="photo-space">
-            <img src="foto.jpg" alt="La nostra foto" onerror="this.style.display='none'; this.parentElement.innerText='[Spazio riservato per la tua foto ❤️]';">
+    <div class="mobile-screen">
+
+        <!-- FASE 1: Domanda iniziale -->
+        <div id="step-1">
+            <div class="photo-space">
+                <img src="foto.jpg" alt="Foto" onerror="this.style.display='none'; this.parentElement.innerText='[Spazio per la tua foto ❤️]';">
+            </div>
+
+            <h1 class="question">Bimba sei pronta per vedere la tua sorpresina?</h1>
+
+            <div class="btn-group">
+                <button class="btn-choice btn-yes" onclick="goToStep2()">Sì ❤️</button>
+                <button class="btn-choice btn-no" onclick="clickNo()">No 😜</button>
+            </div>
+
+            <p id="no-warning">Risposta sbagliata! Devi per forza cliccare "Sì"! 😉</p>
         </div>
 
-        <!-- DOMANDA PRINCIPALE -->
-        <h1 class="question">Bimba sei pronta per vedere la tua sorpresina?</h1>
+        <!-- FASE 2: Schermata di blocco PIN -->
+        <div id="step-2">
+            <div class="lock-icon">🔒</div>
+            <p class="hint-text">INDIZIO: Il giorno del nostro primo bacio</p>
 
-        <!-- CASALLE / PULSANTI SI E NO -->
-        <div class="btn-group">
-            <button class="btn-choice btn-yes" onclick="showSurprise()">Sì ❤️</button>
-            <button class="btn-choice btn-no" onclick="clickNo()">No 😜</button>
+            <div class="pin-dots">
+                <div class="dot" id="dot-0"></div>
+                <div class="dot" id="dot-1"></div>
+                <div class="dot" id="dot-2"></div>
+                <div class="dot" id="dot-3"></div>
+            </div>
+
+            <div class="keypad">
+                <div class="key" onclick="pressKey('1')">1</div>
+                <div class="key" onclick="pressKey('2')">2</div>
+                <div class="key" onclick="pressKey('3')">3</div>
+                <div class="key" onclick="pressKey('4')">4</div>
+                <div class="key" onclick="pressKey('5')">5</div>
+                <div class="key" onclick="pressKey('6')">6</div>
+                <div class="key" onclick="pressKey('7')">7</div>
+                <div class="key" onclick="pressKey('8')">8</div>
+                <div class="key" onclick="pressKey('9')">9</div>
+                <div></div>
+                <div class="key" onclick="pressKey('0')">0</div>
+                <div class="key key-del" onclick="deleteKey()">⌫</div>
+            </div>
+
+            <p id="error-msg"></p>
         </div>
 
-        <p id="no-warning">Risposta sbagliata! Devi per forza cliccare "Sì"! 😉</p>
-
-        <!-- CONTENUTO DELLA SORPRESA (Apare dopo il "Sì") -->
-        <div id="surprise-content">
+        <!-- FASE 3: Schermata Rosacea Finale -->
+        <div id="step-3">
+            <h1 class="unlocked-title">Sorpresa! ❤️</h1>
             
             <div class="counter-box">
                 <p>Insieme da</p>
@@ -194,38 +307,78 @@
 
             <div class="letter">
                 <p>
-                    Sei la persona più speciale che io potessi mai incontrare. Ho creato questo piccolo sito solo per te, per ricordarti quanto ti amo ogni singolo giorno! ❤️
+                    Sei la persona più speciale della mia vita. Ho creato questo angolo web solo per noi due, per ricordarti quanto ti amo ogni singolo giorno! ❤️
                 </p>
             </div>
-
         </div>
 
     </div>
 
-    <footer>
-        Fatto con tanto amore ❤️
-    </footer>
-
     <script>
-        // CONFIGURA QUI LA VOSTRA DATA DI FIDANZAMENTO (Anno, Mese-1, Giorno)
-        // Es. 15 Maggio 2023 -> new Date(2023, 4, 15)
-        const startDate = new Date(2023, 0, 1); 
+        // CONFIGURAZIONE PIN E DATA
+        const CORRECT_PIN = "2609";
+        
+        // Data del vostro fidanzamento (Anno, Mese-1, Giorno) -> es. 26 Settembre 2023 -> new Date(2023, 8, 26)
+        const startDate = new Date(2023, 8, 26); 
+
+        let currentPin = "";
+
+        function clickNo() {
+            document.getElementById('no-warning').style.display = 'block';
+        }
+
+        function goToStep2() {
+            document.getElementById('step-1').style.display = 'none';
+            document.getElementById('step-2').style.display = 'block';
+        }
+
+        function pressKey(num) {
+            if (currentPin.length < 4) {
+                currentPin += num;
+                updateDots();
+            }
+
+            if (currentPin.length === 4) {
+                setTimeout(checkPin, 200);
+            }
+        }
+
+        function deleteKey() {
+            if (currentPin.length > 0) {
+                currentPin = currentPin.slice(0, -1);
+                updateDots();
+                document.getElementById('error-msg').innerText = "";
+            }
+        }
+
+        function updateDots() {
+            for (let i = 0; i < 4; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (i < currentPin.length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                }
+            }
+        }
+
+        function checkPin() {
+            if (currentPin === CORRECT_PIN) {
+                document.getElementById('step-2').style.display = 'none';
+                document.getElementById('step-3').style.display = 'block';
+                calculateDays();
+            } else {
+                document.getElementById('error-msg').innerText = "Codice errato! Riprova ❤️";
+                currentPin = "";
+                updateDots();
+            }
+        }
 
         function calculateDays() {
             const today = new Date();
             const timeDiff = today - startDate;
             const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
             document.getElementById('days-counter').innerText = days + " Giorni";
-        }
-
-        function showSurprise() {
-            document.getElementById('surprise-content').style.display = 'block';
-            document.getElementById('no-warning').style.display = 'none';
-            calculateDays();
-        }
-
-        function clickNo() {
-            document.getElementById('no-warning').style.display = 'block';
         }
     </script>
 </body>
