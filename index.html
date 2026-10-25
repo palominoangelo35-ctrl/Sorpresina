@@ -74,7 +74,7 @@
             background: rgba(255, 255, 255, 0.96);
             width: 100%;
             max-width: 390px;
-            max-height: calc(100dvh - 24px);
+            height: calc(100dvh - 24px);
             border-radius: 28px;
             padding: 20px 18px;
             box-shadow: 0 12px 35px rgba(230, 77, 109, 0.25);
@@ -253,77 +253,85 @@
             min-height: 18px;
         }
 
-        /* FASE 3: MENU DISPENSE PRINCIPALE */
+        /* FASE 3: MENU DISPENSE PRINCIPALE GRANDE E QUADRATO */
         #step-3 {
             display: none;
             animation: fadeIn 0.5s ease-out;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .menu-title {
             font-family: 'Great Vibes', cursive;
             color: #ff3366;
-            font-size: 2.6em;
-            margin-bottom: 2px;
-            text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.5);
+            font-size: 3.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.6);
         }
 
-        .folder-grid {
-            display: flex;
-            flex-direction: column;
+        .folder-grid-large {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 14px;
-            margin-top: 12px;
+            flex-grow: 1;
+            align-content: center;
         }
 
-        .folder-card {
+        .folder-square-card {
             background: linear-gradient(135deg, #ffffff 0%, #fff0f3 100%);
             border: 2px solid #ffccd5;
-            border-radius: 20px;
-            padding: 16px 18px;
+            border-radius: 24px;
+            aspect-ratio: 1 / 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(255, 154, 162, 0.2);
+            box-shadow: 0 8px 20px rgba(255, 154, 162, 0.25);
             transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
             position: relative;
             overflow: hidden;
+            padding: 12px;
         }
 
-        .folder-card::after {
+        .folder-square-card.full-width {
+            grid-column: span 2;
+            aspect-ratio: 2.2 / 1;
+            flex-direction: row;
+            gap: 15px;
+        }
+
+        .folder-square-card::after {
             content: '🌹';
             position: absolute;
-            right: -8px;
-            bottom: -8px;
-            font-size: 1.8em;
+            right: -6px;
+            bottom: -6px;
+            font-size: 2.2em;
             opacity: 0.15;
         }
 
-        .folder-card:active {
-            transform: scale(0.97);
+        .folder-square-card:active {
+            transform: scale(0.96);
             background: #ffe4e9;
         }
 
-        .folder-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
+        .folder-square-icon {
+            font-size: 2.5em;
+            margin-bottom: 6px;
         }
 
-        .folder-icon {
-            font-size: 1.7em;
+        .folder-square-card.full-width .folder-square-icon {
+            font-size: 2.3em;
+            margin-bottom: 0;
         }
 
-        .folder-name {
+        .folder-square-name {
             font-family: 'Dancing Script', cursive;
-            font-size: 1.7em;
+            font-size: 1.8em;
             font-weight: 700;
             color: #ff3366;
-        }
-
-        .arrow-icon {
-            color: #ff3366;
-            font-weight: bold;
-            font-size: 1.2em;
         }
 
         /* SCHERMATE DELLE DISPENSE SINGOLE */
@@ -564,37 +572,28 @@
             <p id="error-msg"></p>
         </div>
 
-        <!-- FASE 3: MENU DELLE TRE DISPENSE -->
+        <!-- FASE 3: MENU DELLE TRE DISPENSE CON RIQUADRI GRANDI E QUADRATI -->
         <div id="step-3">
             <h1 class="menu-title">Sorpresina 🌹</h1>
 
-            <div class="folder-grid">
+            <div class="folder-grid-large">
                 
-                <!-- DISPENSA 1: MEMORIES -->
-                <div class="folder-card" onclick="openFolder('screen-memories')">
-                    <div class="folder-info">
-                        <span class="folder-icon">📸</span>
-                        <span class="folder-name">Memories</span>
-                    </div>
-                    <span class="arrow-icon">➔</span>
+                <!-- DISPENSA 1: MEMORIES (QUADRATO SINISTRA) -->
+                <div class="folder-square-card" onclick="openFolder('screen-memories')">
+                    <span class="folder-square-icon">📸</span>
+                    <span class="folder-square-name">Memories</span>
                 </div>
 
-                <!-- DISPENSA 2: LETTERINA -->
-                <div class="folder-card" onclick="openFolder('screen-letter')">
-                    <div class="folder-info">
-                        <span class="folder-icon">✉️</span>
-                        <span class="folder-name">Letterina</span>
-                    </div>
-                    <span class="arrow-icon">➔</span>
+                <!-- DISPENSA 2: LETTERINA (QUADRATO DESTRA) -->
+                <div class="folder-square-card" onclick="openFolder('screen-letter')">
+                    <span class="folder-square-icon">✉️</span>
+                    <span class="folder-square-name">Letterina</span>
                 </div>
 
-                <!-- DISPENSA 3: MUSIC -->
-                <div class="folder-card" onclick="openFolder('screen-music')">
-                    <div class="folder-info">
-                        <span class="folder-icon">🎵</span>
-                        <span class="folder-name">Music</span>
-                    </div>
-                    <span class="arrow-icon">➔</span>
+                <!-- DISPENSA 3: MUSIC (LARGHEZZA INTERA IN BASSO) -->
+                <div class="folder-square-card full-width" onclick="openFolder('screen-music')">
+                    <span class="folder-square-icon">🎵</span>
+                    <span class="folder-square-name">Music</span>
                 </div>
 
             </div>
@@ -752,7 +751,7 @@
         function checkPin() {
             if (currentPin === CORRECT_PIN) {
                 document.getElementById('step-2').style.display = 'none';
-                document.getElementById('step-3').style.display = 'block';
+                document.getElementById('step-3').style.display = 'flex';
             } else {
                 document.getElementById('error-msg').innerText = "Codice errato! Riprova ❤️";
                 currentPin = "";
@@ -768,7 +767,7 @@
         function backToMenu() {
             const subScreens = document.querySelectorAll('.sub-screen');
             subScreens.forEach(screen => screen.style.display = 'none');
-            document.getElementById('step-3').style.display = 'block';
+            document.getElementById('step-3').style.display = 'flex';
         }
     </script>
 </body>
